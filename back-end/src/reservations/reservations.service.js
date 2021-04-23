@@ -18,8 +18,8 @@ function updateStatus(reservation_id, status) {
 
 function create(newReservation) {
     return knex("reservations")
-    .insert(newReservation)
-    .returning("*");
+        .insert(newReservation)
+        .returning("*");
 };
 
 function read(reservation_id) {
@@ -29,7 +29,7 @@ function read(reservation_id) {
         .first();
 };
 
-function update(reservation_id, updatedReservated) {
+function update(reservation_id, updatedReservation) {
     return knex("reservations")
         .where("reservation_id", reservation_id)
         .update(updatedReservation)
@@ -46,7 +46,7 @@ function update(reservation_id, updatedReservated) {
 function list(date) {
     return knex("reservations")
         .select("*")
-        .whereNotIn("status", "finished")
+        .whereNot("status", "finished")
         .andWhere( "reservation_date", date )
         .orderBy("reservation_time");
 };
