@@ -39,7 +39,7 @@ async function validReservation(req, res, next) {
     return next({
       status: 400,
       message:
-        "Must include first name, last name, mobile number, people, reservation date, and reservation time."
+        "Must include first_name, last_name, mobile_number, people, reservation_date, and reservation_time."
     });
 
   let today = new Date();
@@ -53,13 +53,13 @@ async function validReservation(req, res, next) {
     return next({ status: 400, message: "We are closed on Tuesdays." });
 
   if (!reservation_date.match(/\d{4}-\d{2}-\d{2}/))
-    return next({ status: 400, message: "The reservation date is invalid." });
+    return next({ status: 400, message: "The reservation_date is invalid." });
 
   if (!reservation_time.match(/\d{2}:\d{2}/))
-    return next({ status: 400, message: "The reservation time is invalid." });
+    return next({ status: 400, message: "The reservation_time is invalid." });
 
   if (typeof people !== "number")
-    return next({ status: 400, message: "People must be a number." });
+    return next({ status: 400, message: "people must be a number." });
 
   if (status === "seated")
     return next({ status: 400, message: "Status cannot be seated." });
@@ -80,31 +80,13 @@ async function validReservation(req, res, next) {
 };
 
 function businessHours(req, res, next) {
-  const time = res.locals.newReservation.reservation_time;
-  const hour = time[0] + time[1];
-  const minutes = time[3] + time[4];
-  hour = Number(hour);
-  minutes = Number(minutes);
-
-  if (hour < 10 || (hour <= 10 && minutes < 30)) {
-    return next({ status: 400, message: "We're not open yet." });
-  };
-
-  if (hour > 21 || (hour >= 21 && minutes > 30)) {
-    return next({ status: 400, message: "Reservation is too close to closing time or we're already closed." });
+  let time = Number(req.body.data.reservation_time.replace(":", ""));
+  if (time < 1030 || time > 2130) {
+    return next({ status: 400, message: "Reservations are only applicable from 10:30AM to 9:30PM." });
   };
 
   next();
-}
-
-// function isDuringBusinessHours(req, res, next) {
-//   const time = Number(req.body.data.reservation_time.replace(":", ""));
-//   if (time < 1030 || time > 2130) {
-//     return next({ status: 400, message: "Reservations are only applicable from 10:30AM to 9:30PM." });
-//   }
-
-//   next();
-// };
+};
 
 async function isValidStatus(req, res, next) {
   const currentStatus = res.locals.reservation.status;
@@ -117,7 +99,7 @@ async function isValidStatus(req, res, next) {
   };
 
   if (status !== "booked" && status !== "seated" && status !== "finished") {
-    return next({ status: 400, message: "Unknown status." });
+    return next({ status: 400, message: "unknown status." });
   };
 
   next();
@@ -154,20 +136,20 @@ async function isValidUpdate(req, res, next) {
     return next({
       status: 400,
       message:
-        "Must include first name, last name, mobile number, reservation date, reservation time, and people.",
+        "Must include first_name, last_name, mobile_number, people, reservation_date, and reservation_time.",
     });
   };
 
   if (!reservation_date.match(/\d{4}-\d{2}-\d{2}/)) {
-    return next({ status: 400, message: "Invalid reservation date." });
+    return next({ status: 400, message: "Invalid reservation_date." });
   };
 
   if (!reservation_time.match(/\d{2}:\d{2}/)) {
-    return next({ status: 400, message: "Invalid reservation time." });
+    return next({ status: 400, message: "Invalid reservation_time." });
   };
 
   if (typeof people !== "number") {
-    return next({ status: 400, message: "People must be a number." });
+    return next({ status: 400, message: "people must be a number." });
   };
 
   res.locals.reservation = {
