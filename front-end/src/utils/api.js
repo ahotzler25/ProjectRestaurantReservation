@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /**
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
@@ -66,4 +68,9 @@ export async function listReservations(params, signal) {
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
-}
+};
+
+export async function listTables() {
+  const { data } = await axios.get(`${API_BASE_URL}/tables`);
+  return data.data;
+};
