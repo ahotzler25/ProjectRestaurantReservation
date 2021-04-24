@@ -5,6 +5,10 @@ import useQuery from "../utils/useQuery";
 import { previous, today, next } from "../utils/date-time";
 
 import Seat from "./Seat";
+import NoReservation from "./NoReservation";
+import DashboardList from "./DashboardList";
+
+
 
 export default function Dashboard() {
   let query = useQuery();
@@ -48,7 +52,14 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
-      {reservations.length === 0}
+      {reservations.length === 0 && <NoReservation />}
+      <div className="mr-5 ml-5 pb-5">
+        <div className="row d-flex justify-content-center">
+          {reservations.map((reservation) => (
+            <DashboardList key={reservation.reservation_id} reservation={reservation} />
+          ))}
+        </div>
+      </div>
     </main>
   );
 };
