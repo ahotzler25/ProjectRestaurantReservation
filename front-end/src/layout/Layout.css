@@ -1,4 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  background-color: #222831;
+}
+
+.app-wrapper {
+  background-color: #222831;
+}
+
 .side-bar {
   background-color: #393a44;
   min-width: 200px;
+}
+
+.top-nav-links a:hover {
+  color: #5bc0de !important;
+}
+
+.nav-bar-header:hover {
+  color: #5bc0de !important;
 }
