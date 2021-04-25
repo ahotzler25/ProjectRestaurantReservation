@@ -79,9 +79,8 @@ async function isValidTable(req, res, next) {
 // CRUDL Operations
 // 
 async function create(req, res, next) {
-    const newTable = req.body.data;
-    const table = await tablesService.create(newTable);
-    res.status(201).json({ data: table[0] });
+    const data = await tablesService.create(res.locals.newTable);
+    res.status(201).json({ data: data[0] });
 };
 
 async function read(req, res, next) {

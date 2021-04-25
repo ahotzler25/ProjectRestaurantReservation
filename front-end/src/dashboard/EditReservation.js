@@ -48,7 +48,7 @@ export default function EditReservation() {
         };
 
         axios
-            .put(`${API_BASE_URL}/${reservation_id}`, {
+            .put(`http://localhost:5000/reservations/${reservation_id}`, {
                 data: updatedReservation
             })
             .then((response) => response.status === 200 
@@ -66,7 +66,7 @@ export default function EditReservation() {
 
     useEffect(() => {
         const getReservation = async () => {
-            const response = await fetch(`${API_BASE_URL}/${reservation_id}`);
+            const response = await fetch(`http://localhost:5000/reservations/${reservation_id}`);
             const dataFromAPI = await response.json();
             setReservation(dataFromAPI);
 
