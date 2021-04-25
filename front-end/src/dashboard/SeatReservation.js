@@ -15,7 +15,7 @@ export default function SeatReservation() {
         const abortController = new AbortController();
         listTables(abortController.signal)
             .then(setTables)
-            .catch((err) => console.error(err));
+            .catch((error) => console.error(error));
 
         return () => abortController.abort();
     };
@@ -23,7 +23,10 @@ export default function SeatReservation() {
     useEffect(loadTables, []);
 
     const changeHandler = (event) => setTableId(event.target.value);
-    const cancelHandler = () => history.goBack();
+    const cancelHandler = () => {
+        history.goBack();
+    };
+
     const submitHandler = (event) => {
         event.preventDefault();
 
@@ -33,7 +36,7 @@ export default function SeatReservation() {
                     data: { reservation_id: reservation_id }
                 })
                 .then((response) => response.status === 200 ? history.push("/") : null )
-                .catch((err) => console.log(err));
+                .catch((error) => console.log(error));
         };
     };
 
@@ -42,7 +45,7 @@ export default function SeatReservation() {
             <div className="card container text-center bg-secondary border-info p-0" 
                 style={{maxWidth: "500px", height: "250px", borderRadius: "10px" }}>
                     <div className="card-header text-light border-info">
-                        <h1>Reserve a Table</h1>
+                        <h2>Reserve a Table</h2>
                     </div>
                     <form onSubmit={submitHandler} className="mt-4" style={{ height: "90px" }}>
                         <div className="row justify-content-center">
@@ -58,7 +61,7 @@ export default function SeatReservation() {
                                         <option key={index} value={table.table_id}>
                                             {table.table_name} - {table.capacity}
                                         </option>
-                                    )
+                                    );
                                 })}
                             </select>
                         </div>

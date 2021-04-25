@@ -7,7 +7,7 @@ export default function NoReservation() {
     const showMessage = () => {
         if(showReservation) {
             return (
-                <Alert show={showReservation}>
+                <Alert show={showReservation} variant="info">
                     <Alert.Heading>
                         There are no reservations for this date.
                     </Alert.Heading>

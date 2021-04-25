@@ -3,7 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 export default function Menu() {
   return (
-    <Navbar bg="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="/dashboard" className="nav-bar-header">
         Periodic Tables
       </Navbar.Brand>

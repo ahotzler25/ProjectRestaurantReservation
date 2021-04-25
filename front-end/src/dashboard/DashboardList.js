@@ -8,10 +8,10 @@ export default function DashboardList({ reservation }) {
     const cancelHandler = (event) => {
         event.preventDefault();
 
-        if(window.confirm("Are you sure you want to cancel this reservation? This cannot be undone.")) {
+        if(window.confirm("Do you want to cancel this reservation?")) {
             axios
                 .put(`${API_BASE_URL}/${reservation.reservation_id}/status`, {
-                    data: { status: "cancalled" }
+                    data: { status: "cancelled" }
                 })
                 .then((response) => response.status === 200 ? window.location.reload() : null)
                 .catch(console.error);
@@ -44,7 +44,7 @@ export default function DashboardList({ reservation }) {
                             <Link to={`/reservations/${reservation.reservation_id}/edit`} className="btn btn-info mr-1 text-dark">
                                 Edit
                             </Link>
-                            <button onClick={cancelHandler} data-reservation-id-id-cancel={reservation.reservation_id} className="btn btn-info mr1 text-dark">
+                            <button onClick={cancelHandler} data-reservation-id-cancel={reservation.reservation_id} className="btn btn-info mr-1 text-dark">
                                 Cancel
                             </button>
                             <Link to={`/reservations/${reservation.reservation_id}/seat`} className="btn btn-info text-dark">

@@ -47,7 +47,7 @@ export default function SearchReservation() {
         <div className="container pt-5">
             <div className="card container bg-secondary" style={{ borderRadius: "10px" }}>
                 <form onSubmit={searchHandler}>
-                    <div clasName="form-group">
+                    <div className="form-group">
                         <label htmlFor="mobile_number" className="text-light mt-1 h4">
                             Search:
                         </label>

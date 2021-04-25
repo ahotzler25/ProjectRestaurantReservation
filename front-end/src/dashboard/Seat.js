@@ -37,7 +37,8 @@ export default function Seat({table}) {
                         className="btn btn-info text-dark"
                         onClick={finishHandler}
                     >
-                    Finish</button>
+                    Finish
+                    </button>
                 )}
             </div>
         </div>

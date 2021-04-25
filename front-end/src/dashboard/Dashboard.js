@@ -9,7 +9,6 @@ import NoReservation from "./NoReservation";
 import DashboardList from "./DashboardList";
 
 
-
 export default function Dashboard() {
   let query = useQuery();
   const [ date, setDate ] = useState(query.get("date") || today());
@@ -35,10 +34,10 @@ export default function Dashboard() {
 
   return (
     <main>
-      <div className="text-center">
+      <div className="text-center pt-4">
         <button className="btn btn-info mr-2 text-dark" onClick={() => setDate(previous(date))}>Previous Date</button>
-        <button className="btn btn-info-mr-2 text-dark" onClick={() => setDate(today())}>Today</button>
-        <button className="btn btn-info-mr-2 text-dark" onClick={() => setDate(next(date))}>Next Date</button>
+        <button className="btn btn-info mr-2 text-dark" onClick={() => setDate(today())}>Today</button>
+        <button className="btn btn-info mr-2 text-dark" onClick={() => setDate(next(date))}>Next Date</button>
       </div>
       <div className="text-center m-3">
         <h4 className="mb-0 text-light">Reservations for {date}</h4>
