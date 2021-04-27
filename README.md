@@ -12,8 +12,6 @@ HTML, CSS, JavaScript, React, Express, Node.js, PostgreSQL, Knex.js, React Boots
 
 ![Dashboard Tables and Reservations](https://i.imgur.com/Aq8OQVp.png)
 ![Create a New Reservation](https://i.imgur.com/KgXjmns.png)
-![Reserved Tables](screenshots/us-06-seated-after.png)
-![Search Through Reservations](screenshots\us-07-search-reservations-submit-valid-before.png)
 
 ## API Documentation
 
