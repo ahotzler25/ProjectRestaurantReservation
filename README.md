@@ -10,10 +10,10 @@ HTML, CSS, JavaScript, React, Express, Node.js, PostgreSQL, Knex.js, React Boots
 
 ## 📸 Screenshots
 
-![Dashboard Tables and Reservations](screenshots/reservationDash.png)
-![Create a New Reservation](screenshots/createReservation.png)
-![Reserve a Table](screenshots/reserveTable.png)
-![Search Through Reservations](screenshots/searchReservations.png)
+![Dashboard Tables and Reservations](screenshots/dashboardList.png)
+![Create a New Reservation](screenshots/us-02-reservation-is-future-before.png)
+![Reserved Tables](screenshots/us-06-seated-after.png)
+![Search Through Reservations](screenshots\us-07-search-reservations-submit-valid-before.png)
 
 ## API Documentation
 
